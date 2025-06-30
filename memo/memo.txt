@@ -1,0 +1,19 @@
+﻿Command
+view에서 사용자한테 입력받은 이벤트, 동작 등을 viewModel에 알려주고 viewModel은 거기에 따라서 적절한 로직을 수행해야 한다.
+사용자가 발생시킨 동작과 viewModel에 정의된 함수 그 두개를 연결시켜주는게 Command라고 생각하면 된다.
+
+
+[blahblah]로 붙여주는걸 attribute를 붙인다라고 표현.
+
+Dependency Injection
+클래스가 많아지면 결합도가 높아지게된다.(A는 B를 참조하고, B는 C와 D를 참조하고 있는 상태에서, D클래스의 내용을 바꾼다? 그러면 그 수정사항이 너무 많아진다.)
+그래서 의존성을 주입해주는게 DI이다. DI를 통해서 클래스간의 결합도를 낮출 수 있다.
+-> 강의를 진행하면서 다시 정리해보자.
+생성자 주입 : 클래스를 생성할 때 의존성을 주입
+
+viewModel에서 DateTimeService 라는 클래스에서 제공하는 함수들을 가져와서 사용하고 싶다. ->
+Interfaces 폴더 생성하고, IDateTime 인터페이스 생성
+Services 폴더안에 DateTimeService 클래스 생생하고 IDateTime 상속받아 인터페이스를 구현한다.
+ViewModel/Pages의 DashboardViewModel에서 생성자를 만들고, 생성자를 통해서 IDateTime을 주입받는다.
+App.xmal의 코드 비하인드에 우리가 만든 인터페이스와 서비스 클래스를 add 해줘야한다.
+IDateTime를 internal로 선언하니까 에러가 생기네..?
