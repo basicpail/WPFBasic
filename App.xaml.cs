@@ -1,12 +1,14 @@
-﻿using System.IO;
-using System.Reflection;
-using System.Windows.Threading;
+﻿using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO;
+using System.Reflection;
+using System.Windows.Threading;
 using Wpf.Ui;
 using Wpf.Ui.DependencyInjection;
 using WPFBasic.Interfaces;
+using WPFBasic.Models;
 using WPFBasic.Services;
 using WPFBasic.ViewModels.Pages;
 using WPFBasic.ViewModels.Windows;
@@ -56,6 +58,9 @@ namespace WPFBasic
 
                 //selfMade services
                 services.AddSingleton<IDateTime, DateTimeService>();
+                services.AddSingleton<IDatabase<GangnamguPopulation>, GangnamguPopulationService>();
+                services.AddDbContext<WpfProjectDatabaseContext>();
+
             }).Build();
 
         /// <summary>
